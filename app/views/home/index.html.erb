@@ -1,0 +1,24 @@
+<h2>Log in</h2>   
+
+<% if current_user.present? %>
+    <%= link_to('Logout', destroy_user_session_path, method: :delete) %>
+<% end %>
+
+<%= form_for(User, as: @user, url: session_path(@user)) do |f| %>
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password %><br />
+    <%= f.password_field :password, autocomplete: "current-password" %>
+  </div>
+
+  
+
+  <div class="actions">
+    <%= f.submit "Log in" %>
+  </div>
+<% end %>
+
